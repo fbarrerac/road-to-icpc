@@ -1,9 +1,16 @@
 /*
- * INPUT STRUCTURE:
- * 1. 't' (Test Cases): Number of independent lists to reverse.
- * 2. 'n' (List Size): Number of elements for the current list.
- * 3. 'data': The actual integers to be stored in the nodes.
- */
+* Problem: Reverse a linked list
+* Platform: HackerRank
+* Link: https://www.hackerrank.com/challenges/reverse-a-linked-list/problem
+* Difficulty: Easy
+*/
+
+/*
+* INPUT STRUCTURE:
+* 1. 't' (Test Cases): Number of independent lists to reverse.
+* 2. 'n' (List Size): Number of elements for the current list.
+* 3. 'data': The actual integers to be stored in the nodes.
+*/
 
 #include <iostream>
 #include <string>
@@ -34,7 +41,7 @@ Node* reverse(Node* head) {
         curr = next;        // 4. Move the 'current' window forward
     }
 
-    return prev; // 'prev' ends up as the new head of the reversed list
+    return prev;  // 'prev' ends up as the new head of the reversed list
 }
 
 void printList(Node* node) {
