@@ -15,13 +15,12 @@ This repository is my personal training lab for the **ICPC** (International Coll
 
 ## 📂 Structure
 
-Plaintext
-
 ```
 .
 ├── codeforces/   # Competitive programming rounds and practice
 ├── hackerrank/   # Logic and algorithm challenges
-└── leetcode/     # Data structures and optimization problems
+├── leetcode/     # Data structures and optimization problems
+└── tap/          # Argentine Programing Tournament
 ```
 
 ## 🚀 Execution
