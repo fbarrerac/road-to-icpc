@@ -1,42 +1,11 @@
-/* There are n students in a school class, the rating of the i-th student on Codehorses is ai.
-You have to form a team consisting of k students (1≤k≤n) such that the ratings of all team members are distinct.
-
-If it is impossible to form a suitable team, print "NO" (without quotes). Otherwise print "YES", and then print k
- distinct numbers which should be the indices of students in the team you form.
- If there are multiple answers, print any of them.
-
-Input
-The first line contains two integers n
- and k
- (1≤k≤n≤100
-) — the number of students and the size of the team you have to form.
-
-The second line contains n integers a1,a2,…,an (1≤ai≤100), where ai is the rating of i-th student.
-
-Output
-If it is impossible to form a suitable team, print "NO" (without quotes).
-Otherwise print "YES", and then print k distinct integers from 1 to n which should be the indices of students in the team you form.
- All the ratings of the students in the team should be distinct. You may print the indices in any order.
- If there are multiple answers, print any of them.
-
-Assume that the students are numbered from 1 to n. */
-
 #include <iostream>
+#include <unordered_set>
 #include <vector>
 
 using std::cin;
 using std::cout;
+using std::unordered_set;
 using std::vector;
-
-void process(int k, vector<int> ratings) {
-    vector<int> students;
-    int i= 0;
-
-    students.push_back(ratings[i]);
-    while (students.size() < k && i < ratings.size()) {
-        i++;
-    }
-}
 
 int main() {
     // Desync from stdio to accelerate heavy I/O operations
@@ -46,10 +15,28 @@ int main() {
     int n, k;
     cin >> n >> k;
 
-    vector<int> ratings(n);
+    vector<int> team;
+    unordered_set<int> ratings;
+
     for (int i = 0; i < n; ++i) {
-        cin >> ratings[i];
+        int current_rating;
+        cin >> current_rating;
+
+        if (!ratings.contains(current_rating)) {
+            ratings.insert(current_rating);
+            team.push_back(i+1);
+        }
+
+        if (team.size() == k) break;
     }
 
-    process(k, ratings);
+    if (team.size() == k) {
+        cout << "YES" << "\n";
+        for (int i = 0; i < k; ++i) {
+            cout << team[i] << (i == k - 1 ? "" : " ");
+        }
+        cout << "\n";
+    } else {
+        cout << "NO" << "\n";
+    }
 }
